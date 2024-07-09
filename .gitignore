@@ -1,6 +1,5 @@
 /target/
 /AppiumFramework/src/test/java/resources
-AndroidAutomationReport/
 /AppiumFramework/iOSAutomationReport
 .DS_Store
 src/test/java/resources/
