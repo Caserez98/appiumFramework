@@ -39,7 +39,7 @@ public class HorseProfilePage {
     @AndroidFindBy(xpath="(//android.view.View)[6]")
     protected WebElement lblLocation;
 
-    @AndroidFindBy(xpath="(//android.widget.Button)[3]")
+    @AndroidFindBy(xpath="(//android.widget.Button)[1]")
     protected WebElement btnBack;
 
     public void clickBack(){

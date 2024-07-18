@@ -61,6 +61,9 @@ public class AddHorsesPage {
      @AndroidFindBy(accessibility="Select a horse gender...")
      protected WebElement btnGender;
 
+    @AndroidFindBy(xpath="(//android.widget.Button)[1]")
+    protected WebElement btnBack;
+
      public void enterName(String name){
          wait.until(ExpectedConditions.elementToBeClickable(txtName));
          txtName.click();

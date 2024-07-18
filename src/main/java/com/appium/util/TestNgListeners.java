@@ -59,7 +59,7 @@ public class TestNgListeners implements ITestListener{
 		actionDriver.set(currentClass.actionDriver);
 		common.set(currentClass.common);
 		test.set(currentClass.test);
-		common.get().log(arg0.getMethod().getMethodName() + " omitido!");
+		common.get().log(arg0.getMethod().getMethodName() + " skipped!");
 		test.get().log(LogStatus.SKIP, arg0.getThrowable());
 		String deviceName = actionDriver.get().getDeviceName().trim();
 		common.get().skipSeleniumTest(arg0.getThrowable(), actionDriver.get(), 0, deviceName);
@@ -72,7 +72,7 @@ public class TestNgListeners implements ITestListener{
 		actionDriver.set(currentClass.actionDriver);
 		common.set(currentClass.common);
 		test.set(currentClass.test);
-		common.get().log("Ejecutando Test Case " + currentClass.testCaseName);
+		common.get().log("Executing Test Script" + currentClass.testCaseName);
 
 		// actionDriver.set(SelTestCase.getActionDriver());
 		// common.set(SelTestCase.getCommon());
@@ -88,7 +88,7 @@ public class TestNgListeners implements ITestListener{
 		actionDriver.set(currentClass.actionDriver);
 		common.set(currentClass.common);
 		test.set(currentClass.test);
-		common.get().log("Test Script Ejecutado" + currentClass.testCaseName);
+		common.get().log("Test Script successfully executed " + currentClass.testCaseName);
 		String deviceName = actionDriver.get().getDeviceName().trim();
 		common.get().passSeleniumTest(arg0.getThrowable(), actionDriver.get(), 0, deviceName);
 	}

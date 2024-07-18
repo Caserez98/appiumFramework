@@ -72,7 +72,7 @@ public class CommonUtil {
 		initializeAppiumDriver(device.toString());
 	}
 	public void initializeAppiumDriver(String device) throws Exception {
-		log("Iniciando Driver de Appium");
+		log("Initializing Appium Driver");
 
 		try {
 			deviceName=device;
@@ -150,7 +150,7 @@ public class CommonUtil {
 
 	public void logFail(Object log) {
 		AppTestCase.getTest().log(LogStatus.FAIL, log.toString());
-		addScreenShot(deviceName);
+		addScreenShot(deviceName, log);
 	}
 
 
@@ -165,10 +165,29 @@ public class CommonUtil {
 			}
 			actionDriver.takeScreenShot(MAIN_DIR + screenShotName);
 			try {
-				test.log(LogStatus.INFO, "Evidencia adjuntada abajo: " + test.addScreenCapture(screenShotName));
+				test.log(LogStatus.INFO, "Evidence attached: " + test.addScreenCapture(screenShotName));
 			} catch (Throwable e) {
 				e.printStackTrace();
-				test.log(LogStatus.FAIL, "Se obtuvo el siguiente error al adjuntar la evidencia " + e.getMessage());
+				test.log(LogStatus.FAIL, "Error " + e.getMessage());
+			}
+		}
+	}
+
+
+	public void addScreenShot(String deviceName, Object log) {
+		if (deviceName != null) {
+
+			if (sessionId == null) {
+				screenShotName = testCaseId + "_" + deviceName + "_" + RandomUtil.getRandomNumber(12) + ".jpeg";
+			} else {
+				screenShotName = sessionId + ".jpeg";
+			}
+			actionDriver.takeScreenShot(MAIN_DIR + screenShotName);
+			try {
+				test.log(LogStatus.INFO, log.toString() + "Evidence attached: " + test.addScreenCapture(screenShotName));
+			} catch (Throwable e) {
+				e.printStackTrace();
+				test.log(LogStatus.FAIL, "Error " + e.getMessage());
 			}
 		}
 	}
@@ -247,8 +266,8 @@ public class CommonUtil {
 	@SuppressWarnings("unused")
 	public void passSeleniumTest(Throwable t, BaseActionDriver actionDriver, int counter, String deviceName) {
 
-		test.log(LogStatus.PASS, "Ejecucion finalizada con exito");
-		addScreenShot(deviceName);
+		test.log(LogStatus.PASS, "Execution was done successfully");
+		//addScreenShot(deviceName);
 	}
 
 
